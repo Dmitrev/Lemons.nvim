@@ -15,22 +15,18 @@ M.colors = {
     dark_white   = "#cacaca",
     white        = "#F5F5F5",
     dark_red     = "#1B0C0F",
-    red          = "#DE3354",
+    red          = "#e33a5b",
     light_red    = "#FF446F",
     dark_green   = "#0B1B10",
     lime         = "#2ed592",
     green        = "#2ED563",
-    light_green  = "#44F656",
     dark_yellow  = "#1D190D",
     orange       = "#fa8a49",
     yellow       = "#F0BE42",
-    light_yellow = "#F5E44E",
     dark_blue    = "#0D1018",
-    blue         = "#4063BB",
-    light_blue   = "#5E76FC",
-    dark_purple  = "#1B0F17",
-    purple       = "#D758B0",
-    light_purple = "#FF73E4",
+    blue         = "#486ac0",
+    light_blue   = "#647af6",
+    pink         = "#e74c8d",
     dark_cyan    = "#0C1918",
     cyan         = "#37C3B5",
     light_cyan   = "#6AD8ED",
@@ -52,19 +48,19 @@ local highlights = {
     DiffChange = { bg = c.dark_blue },
     DiffDelete = { bg = c.dark_red, fg = c.light_red, bold = true },
     DiffText = { bg = c.dark_cyan },
-    NonText = { fg = c.grey },
+    NonText = { fg = c.light_grey },
     TermCursor = { fg = c.black, bg = c.yellow },
-    ErrorMsg = { fg = c.red, bold = true },
-    WarningMsg = { fg = c.yellow, bold = true },
+    ErrorMsg = { link = "DiagnosticError" },
+    WarningMsg = { link = "DiagnosticWarn" },
     WinSeparator = { fg = c.dark_grey },
     Folded = { bg = c.dark_blue, fg = c.blue },
     SignColumn = { fg = c.light_grey },
     LineNr = { fg = c.light_grey },
     CursorLineNr = { fg = c.yellow, bold = true },
-    MatchParen = { fg = c.light_purple, bold = true },
+    MatchParen = { fg = c.yellow, bold = true },
     Search = { bg = c.dark_yellow, fg = c.yellow },
     ModeMsg = { fg = c.green },
-    MoreMsg = { fg = c.white },
+    MoreMsg = { fg = c.yellow },
     NormalFloat = { link = "Normal" },
     FloatBorder = { fg = c.light_grey },
     Title = { fg = c.yellow, bold = true },
@@ -75,7 +71,7 @@ local highlights = {
     PmenuThumb = { bg = c.dark_white },
     PmenuMatch = { underline = true },
     PmenuMatchSel = { underline = true, sp = c.black },
-    Question = { fg = c.white },
+    Question = { fg = c.yellow },
     QuickFixLine = { bold = true },
     qfFileName = { fg = c.yellow },
     qfLineNr = { fg = c.darker_white },
@@ -94,39 +90,39 @@ local highlights = {
     Function = { fg = c.yellow, bold = true },
     String = { fg = c.green },
     Identifier = { fg = c.white },
-    StorageClass = { fg = c.white, bold = true },
+    -- StorageClass = { fg = c.white, bold = true },
     Type = { fg = c.lime },
-    Constant = { fg = c.purple },
+    Constant = { fg = c.pink },
     Boolean = { link = "Constant" },
-    Character = { link = "Constant" },
+    Character = { link = "String" },
     Number = { fg = c.orange },
     -- Exception = { fg = c.red },
-    Label = { fg = c.cyan },
+    Label = { fg = c.dark_white },
     Operator = { fg = c.red },
     Special = { fg = c.light_cyan },
     Delimiter = { fg = c.white },
-    Statement = { fg = c.purple },
-
-    Error = { fg = c.black, bg = c.red },
-    Added = { fg = c.green },
-    Removed = { fg = c.red },
-    Changed = { fg = c.light_blue },
+    Statement = { link = "Keyword" },
     Keyword = { fg = c.orange },
     Structure = { fg = c.cyan },
     Todo = { fg = c.cyan },
     PreProc = { fg = c.dark_white, bold = true },
 
+    Error = { fg = c.black, bg = c.red },
+    Added = { fg = c.green },
+    Removed = { fg = c.red },
+    Changed = { fg = c.light_blue },
+
     -- Diagnostics
-    DiagnosticError = { fg = c.red },
-    DiagnosticWarn = { fg = c.yellow },
-    DiagnosticInfo = { fg = c.light_blue },
-    DiagnosticHint = { fg = c.cyan },
-    DiagnosticOk = { fg = c.green },
-    DiagnosticVirtualTextError = { fg = c.light_red, bg = c.dark_red },
-    DiagnosticVirtualTextWarn = { fg = c.yellow, bg = c.dark_yellow },
-    DiagnosticVirtualTextInfo = { fg = c.light_blue, bg = c.dark_blue },
-    DiagnosticVirtualTextHint = { fg = c.cyan, bg = c.dark_cyan },
-    DiagnosticVirtualTextOk = { fg = c.light_green, bg = c.dark_green },
+    DiagnosticError = { fg = c.red, bold = true },
+    DiagnosticWarn = { fg = c.yellow, bold = true },
+    DiagnosticInfo = { fg = c.light_blue, bold = true },
+    DiagnosticHint = { fg = c.cyan, bold = true },
+    DiagnosticOk = { fg = c.green, bold = true },
+    DiagnosticVirtualTextError = { fg = c.red, bold = true },
+    DiagnosticVirtualTextWarn = { fg = c.yellow, bold = true },
+    DiagnosticVirtualTextInfo = { fg = c.light_blue, bold = true },
+    DiagnosticVirtualTextHint = { fg = c.cyan, bold = true },
+    DiagnosticVirtualTextOk = { fg = c.green, bold = true },
     DiagnosticUnderlineError = { underline = true, sp = c.red },
     DiagnosticUnderlineWarn = { underline = true, sp = c.yellow },
     DiagnosticUnderlineInfo = { underline = true, sp = c.blue },
@@ -142,7 +138,7 @@ local highlights = {
 
     -- LSP
     LspCodeLens = { fg = c.light_grey },
-    LspCodeLensSeparator = { fg = c.grey },
+    LspCodeLensSeparator = { fg = c.light_grey },
     LspInlayHint = { bg = c.darker_grey, fg = c.light_grey },
     LspReferenceText = { bg = c.dark_grey },
     LspReferenceRead = { link = "LspReferenceText" },
@@ -151,10 +147,12 @@ local highlights = {
 
     -- Treesitter
     ["@variable"] = { fg = c.white },
+    ["@type.builtin"] = { link = "Type" },
+    ["@attribute.builtin"] = { link = "@attribute" },
     ["@markup.heading.1"] = { fg = c.yellow, bold = true },
     ["@markup.heading.2"] = { fg = c.orange, bold = true },
     ["@markup.heading.3"] = { fg = c.red, bold = true },
-    ["@markup.heading.4"] = { fg = c.purple },
+    ["@markup.heading.4"] = { fg = c.pink },
     ["@markup.heading.5"] = { fg = c.light_blue },
     ["@markup.heading.6"] = { fg = c.green },
     ["@markup.link"] = { underline = false },
@@ -193,10 +191,10 @@ local highlights = {
     BlinkCmpKindPackage = { fg = c.orange },
     BlinkCmpKindNameSpace = { fg = c.cyan },
     BlinkCmpKindObject = { fg = c.light_blue },
-    BlinkCmpKindValue = { fg = c.purple },
-    BlinkCmpKindNumber = { fg = c.purple },
-    BlinkCmpKindConstant = { fg = c.purple },
-    BlinkCmpKindEnumMember = { fg = c.purple },
+    BlinkCmpKindValue = { fg = c.pink },
+    BlinkCmpKindNumber = { fg = c.pink },
+    BlinkCmpKindConstant = { fg = c.pink },
+    BlinkCmpKindEnumMember = { fg = c.pink },
     BlinkCmpKindNull = { fg = c.white },
     BlinkCmpKindSnippet = { fg = c.dark_white },
     BlinkCmpKindColor = { fg = c.red },
@@ -223,7 +221,7 @@ local highlights = {
     MiniIconsGreen = { fg = c.green },
     MiniIconsGrey = { fg = c.dark_white },
     MiniIconsOrange = { fg = c.orange },
-    MiniIconsPurple = { fg = c.purple },
+    MiniIconsPurple = { fg = c.pink },
     MiniIconsRed = { fg = c.red },
     MiniIconsYellow = { fg = c.yellow },
 
@@ -264,17 +262,17 @@ function M.load()
     vim.g.terminal_color_0 = c.black
     vim.g.terminal_color_1 = c.red
     vim.g.terminal_color_2 = c.green
-    vim.g.terminal_color_3 = c.yellow
+    vim.g.terminal_color_3 = c.orange
     vim.g.terminal_color_4 = c.blue
-    vim.g.terminal_color_5 = c.purple
+    vim.g.terminal_color_5 = c.pink
     vim.g.terminal_color_6 = c.cyan
     vim.g.terminal_color_7 = c.dark_white
-    vim.g.terminal_color_8 = c.grey
+    vim.g.terminal_color_8 = c.light_grey
     vim.g.terminal_color_9 = c.light_red
-    vim.g.terminal_color_10 = c.light_green
-    vim.g.terminal_color_11 = c.light_yellow
+    vim.g.terminal_color_10 = c.lime
+    vim.g.terminal_color_11 = c.yellow
     vim.g.terminal_color_12 = c.light_blue
-    vim.g.terminal_color_13 = c.light_purple
+    vim.g.terminal_color_13 = c.pink
     vim.g.terminal_color_14 = c.light_cyan
     vim.g.terminal_color_15 = c.white
 end
