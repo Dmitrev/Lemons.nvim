@@ -1,4 +1,4 @@
----@alias lemons.Highlights table<string, vim.api.keyset.highlight|fun(): vim.api.keyset.highlight>
+---@alias lemons.Highlights table<string, vim.api.keyset.highlight>
 
 ---@param config lemons.Config
 ---@param c lemons.Colors
@@ -30,20 +30,20 @@ local function get_highlights(config, c)
         Search = { bg = c.dark_yellow, fg = c.yellow },
         ModeMsg = { fg = c.green },
         MoreMsg = { fg = c.yellow },
-        NormalFloat = function()
+        NormalFloat = (function()
             if config.float_style == "normal" then
                 return { link = "Normal" }
             elseif config.float_style == "light" then
                 return { bg = c.dark_grey }
             end
-        end,
-        FloatBorder = function()
+        end)(),
+        FloatBorder = (function()
             if config.float_style == "normal" then
                 return { bg = c.black, fg = c.light_grey }
             elseif config.float_style == "light" then
                 return { bg = c.dark_grey, fg = c.light_grey }
             end
-        end,
+        end)(),
         Title = { fg = c.yellow, bold = true },
         Pmenu = { bg = c.dark_grey, fg = c.white },
         PmenuSel = { fg = c.black, bg = c.yellow },
@@ -133,6 +133,7 @@ local function get_highlights(config, c)
         ["@variable"] = { fg = c.white },
         ["@type.builtin"] = { link = "Type" },
         ["@attribute.builtin"] = { link = "@attribute" },
+        ["@keyword.directive"] = { link = "PreProc" },
         ["@markup.heading.1"] = { fg = c.yellow, bold = true },
         ["@markup.heading.2"] = { fg = c.orange, bold = true },
         ["@markup.heading.3"] = { fg = c.red, bold = true },
@@ -145,13 +146,14 @@ local function get_highlights(config, c)
         ["@markup.link.url"] = { fg = c.blue, underline = true },
         ["@markup.strikethrough"] = { strikethrough = true, fg = c.dark_white },
         ["@markup.quote"] = { fg = c.dark_white },
-        ["@keyword.directive"] = { link = "PreProc" },
-        ["@comment.error"] = { link = "DiagnosticError" },
-        ["@comment.warning"] = { link = "DiagnosticWarn" },
+        ["@comment.error"] = { fg = c.red },
+        ["@comment.warning"] = { fg = c.yellow },
         ["@comment.todo"] = { link = "Todo" },
-        ["@comment.note"] = { link = "DiagnosticInfo" },
+        ["@comment.note"] = { fg = c.blue },
 
         -- LSP semantic tokens
+        ["@lsp.type.operator"] = {},
+        ["@lsp.type.formatSpecifier"] = { link = "Special" },
 
         --- PLUGINS ---
         -- blink.cmp
@@ -269,11 +271,7 @@ function M.set(config)
     highlights = vim.tbl_extend("force", highlights, config.hl_override(colors))
 
     for name, val in pairs(highlights) do
-        if type(val) == "function" then
-            vim.api.nvim_set_hl(0, name, val())
-        else
-            vim.api.nvim_set_hl(0, name, val)
-        end
+        vim.api.nvim_set_hl(0, name, val)
     end
 
     if config.terminal_colors then
