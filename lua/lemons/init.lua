@@ -3,6 +3,7 @@
 
 ---@class lemons.Config
 ---@field italic_comments? boolean Make comments italic
+---@field bold_functions? boolean Make functions bold
 ---@field terminal_colors? boolean Setup terminal colors
 ---@field float_style? "normal" | "light" Set floating window background
 ---@field hl_override? lemons.HlOverride Override highlights
@@ -13,6 +14,7 @@ local M = {}
 ---@type lemons.Config
 local config = {
     italic_comments = true,
+    bold_functions = true,
     terminal_colors = true,
     float_style = "normal",
     hl_override = function()

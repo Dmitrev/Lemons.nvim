@@ -26,7 +26,7 @@ local function get_highlights(config, c)
         SignColumn = { fg = c.light_grey },
         LineNr = { fg = c.light_grey },
         CursorLineNr = { fg = c.yellow, bold = true },
-        MatchParen = { fg = c.yellow, bold = true },
+        MatchParen = { bg = c.grey, bold = true },
         Search = { bg = c.dark_yellow, fg = c.yellow },
         ModeMsg = { fg = c.green },
         MoreMsg = { fg = c.yellow },
@@ -50,8 +50,8 @@ local function get_highlights(config, c)
         PmenuExtra = { fg = c.darker_white },
         PmenuSbar = { bg = c.grey },
         PmenuThumb = { bg = c.dark_white },
-        PmenuMatch = { underline = true },
-        PmenuMatchSel = { underline = true, sp = c.black },
+        PmenuMatch = { bold = true },
+        PmenuMatchSel = { bold = true, sp = c.black },
         Question = { fg = c.yellow },
         QuickFixLine = { bold = true },
         qfFileName = { fg = c.yellow },
@@ -71,7 +71,7 @@ local function get_highlights(config, c)
         WinBarNC = { link = "StatusLineNC" },
 
         Comment = { fg = c.darker_white, italic = config.italic_comments },
-        Function = { fg = c.yellow, bold = true },
+        Function = { fg = c.yellow, bold = config.bold_functions },
         String = { fg = c.green },
         Identifier = { fg = c.white },
         -- StorageClass = { fg = c.white, bold = true },
@@ -129,6 +129,9 @@ local function get_highlights(config, c)
         LspReferenceWrite = { link = "LspReferenceText" },
         LspSignatureActiveParameter = { bg = c.grey, bold = true },
 
+        -- Man
+        manReference = { fg = c.blue },
+
         -- Treesitter
         ["@variable"] = { fg = c.white },
         ["@type.builtin"] = { link = "Type" },
@@ -143,7 +146,7 @@ local function get_highlights(config, c)
         ["@markup.link"] = { underline = false },
         ["@markup.link.vimdoc"] = { underline = true },
         ["@markup.link.label"] = { underline = true },
-        ["@markup.link.url"] = { fg = c.blue, underline = true },
+        ["@markup.link.url"] = { fg = c.blue },
         ["@markup.strikethrough"] = { strikethrough = true, fg = c.dark_white },
         ["@markup.quote"] = { fg = c.dark_white },
         ["@comment.error"] = { fg = c.red },
