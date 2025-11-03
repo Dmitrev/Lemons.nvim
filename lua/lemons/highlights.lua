@@ -52,7 +52,7 @@ local function get_highlights(c)
         Tabline = { bg = c.gray, fg = c.darker_white },
         TablineFill = { bg = c.gray },
         TablineSel = { bg = c.black, fg = c.white, bold = true },
-        Visual = { bg = c.gray, bold = true },
+        Visual = { bg = c.gray },
         WinBar = { link = "StatusLine" },
         WinBarNC = { link = "StatusLineNC" },
 

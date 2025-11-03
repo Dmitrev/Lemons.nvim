@@ -1,9 +1,9 @@
-local c = require("lemons.colors").colors
+local c = require("lemons.colors")
 
 return {
     normal = {
         a = { fg = c.black, bg = c.yellow, gui = "bold" },
-        b = { bg = c.grey, fg = c.white },
+        b = { bg = c.gray, fg = c.white },
         c = "StatusLine",
     },
     insert = {
@@ -22,7 +22,7 @@ return {
         a = { fg = c.black, bg = c.orange, gui = "bold" },
     },
     inactive = {
-        a = { fg = c.white, bg = c.grey, gui = "bold" },
+        a = { fg = c.dark_white, bg = c.gray, gui = "bold" },
         c = "StatusLineNC",
     },
 }
