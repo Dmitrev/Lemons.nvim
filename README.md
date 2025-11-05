@@ -46,3 +46,7 @@ To access color palette use `require("lemons.colors")` which is a table of color
 | `dark_cyan`    | `#0C1918` |
 | `cyan`         | `#37C3B5` |
 | `light_cyan`   | `#6AD8ED` |
+
+## 🔌 Plugin support
+Here's the [list of supported plugins](https://github.com/Kaikacy/Lemons.nvim/blob/f151671146d810364108042c1e060215b79edaeb/lua/lemons/highlights.lua#L155).
+I only added highlights for the ones I use and don't like the defaults, but **feel free to make PRs and Issues**.
